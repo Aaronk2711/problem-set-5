@@ -26,7 +26,11 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 1 CODE HERE
+  let number = prompt('Choose a number between 1 and 23'); ;
+  if (number >= 1 && number <= 23) {
+
+  }
+
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -189,6 +193,31 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
+
+windspeed = prompt('Please enter a positive integer for your windspeed');
+
+windspeed = parseInt(windspeed);
+
+while (windspeed < 0) {
+  windspeed = prompt('Please enter a positive integer for your windspeed');
+  windspeed = parseInt(windspeed);
+}
+
+
+while (Number.isInteger(windspeed) == false) {
+  windspeed = prompt('Please enter a positive integer for your windspeed');
+  windspeed = parseInt(windspeed);
+
+}
+
+
+
+if (windspeed > 157) {
+  document.getElementById("hurricane-output").innerHTML = "Category 5 Hurricane.";
+}
+
+
+
 
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
