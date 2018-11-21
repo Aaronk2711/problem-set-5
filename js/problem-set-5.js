@@ -273,6 +273,26 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
+   let i = 1;
+
+   do {
+     scores = prompt('Please enter 6 numbers between 1 and 10');
+     i++;
+   } while ( isNaN(scores) || scores < 0 || i < 7 );
+
+
+   /*let score1 = Number(scores[1]);
+   let score2 = Number(scores[2]);
+   let score3 = Number(scores[3]);
+   let score4 = Number(scores[4]);
+   let score5 = Number(scores[5]);
+   let score6 = Number(scores[6]);*/
+
+   scores = parseFloat(scores);
+
+
+console.log(scores[1], scores[2], scores[3], scores[4], scores[5], scores[6]);
+
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
