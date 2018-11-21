@@ -194,29 +194,40 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
-windspeed = prompt('Please enter a positive integer for your windspeed');
 
-windspeed = parseInt(windspeed);
 
-while (windspeed < 0) {
+do {
   windspeed = prompt('Please enter a positive integer for your windspeed');
-  windspeed = parseInt(windspeed);
-}
+  windspeed = parseFloat(windspeed);
+} while ( isNaN( windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false);
 
-
-while (Number.isInteger(windspeed) == false) {
-  windspeed = prompt('Please enter a positive integer for your windspeed');
-  windspeed = parseInt(windspeed);
-
-}
-
-
-
-if (windspeed > 157) {
+if (windspeed >= 157) {
   document.getElementById("hurricane-output").innerHTML = "Category 5 Hurricane.";
 }
 
+else if (windspeed >= 130 && windspeed <= 156) {
+  document.getElementById("hurricane-output").innerHTML = "Category 4 Hurricane.";
+}
 
+else if (windspeed >= 111 && windspeed <= 129) {
+  document.getElementById("hurricane-output").innerHTML = "Category 3 Hurricane.";
+}
+
+else if (windspeed >= 96 && windspeed <= 110) {
+  document.getElementById("hurricane-output").innerHTML = "Category 2 Hurricane.";
+}
+
+else if (windspeed >= 74 && windspeed <= 95) {
+  document.getElementById("hurricane-output").innerHTML = "Category 1 Hurricane.";
+}
+
+else if (windspeed >= 39 && windspeed <= 73) {
+  document.getElementById("hurricane-output").innerHTML = "Tropical Storm.";
+}
+
+else {
+  document.getElementById("hurricane-output").innerHTML = "The skies are calm...";
+}
 
 
   ///////////////////////////////// DO NOT MODIFY
