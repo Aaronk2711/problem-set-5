@@ -26,10 +26,10 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  let number = prompt('Choose a number between 1 and 23'); ;
-  if (number >= 1 && number <= 23) {
-
-  }
+  do {
+    height = prompt('Please enter an integer between 1 and 23 for your height');
+    windspeed = parseFloat(windspeed);
+  } while ( isNaN( windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false);
 
 
   ////////////////////////// DO NOT MODIFY
@@ -127,6 +127,7 @@ function credit() {
    *       as a copy of the 'card' variable.
    */
 
+
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
@@ -157,12 +158,41 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  let answer = Math.floor(Math.random() * (999)) + 1;
+  let number;
+  let attempts = 0;
+
+do {
+  number = prompt('Please try to guess the integer number between 1 and 1000');
+  number = parseFloat(number);
+
+  if  (isNaN(number) || number < 1 || number > 1000 || Number.isInteger(number) == false) {
+    document.getElementById("guess-output").innerHTML = 'Please enter an integer between 1 and 1000';
+    continue;
+  }
+
+  attempts++;
+
+  if (number > answer){
+    document.getElementById("guuess-output").innerHTML = "Your most recent guess was larger than the answer";
+    continue;
+  }
+
+  if (number < answer) {
+    document.getElementById("guess-output").innerHTML = "Your most recent guess was smaller than answer";
+    continue;
+  }
+
+  } while (number !== answer);
+
+document.getElementById("guess-output").innerHTML = ('Good job, you guessed the number ' + answer + ' in '  + attempts + ' tries!');
+
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
   ////////////////// DO NOT MODIFY
 }
+
 
 /*
  * Hurricane. 5 points.
@@ -273,25 +303,6 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
-   let i = 1;
-
-   do {
-     scores = prompt('Please enter 6 numbers between 1 and 10');
-     i++;
-   } while ( isNaN(scores) || scores < 0 || i < 7 );
-
-
-   /*let score1 = Number(scores[1]);
-   let score2 = Number(scores[2]);
-   let score3 = Number(scores[3]);
-   let score4 = Number(scores[4]);
-   let score5 = Number(scores[5]);
-   let score6 = Number(scores[6]);*/
-
-   scores = parseFloat(scores);
-
-
-console.log(scores[1], scores[2], scores[3], scores[4], scores[5], scores[6]);
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
