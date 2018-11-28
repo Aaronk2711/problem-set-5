@@ -156,21 +156,21 @@ totalsum = firstsum + secondsum;
 
 if (totalsum % 10 == 0) {
   if (card.length == 15 && cardArray.charAt(1) == 3 && cardArray.charAt(2) == (4 || 7)) {
-    document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/amex.png + "'>" ;
+    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/amex.png + "'>" ;
   }
 
   if (card.length == 16 && cardArray.charAt(1) == 5 && cardArray.charAt(2) == (1 || 2 || 3 || 4 || 5)) {
-    document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/mastercard.png + "'>" ;
+    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/mastercard.png + "'>" ;
   }
 
   if (card.length == (13 || 16) && cardArray.charAt(1) == 3 && cardArray.charAt(2) == 4) {
-    document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/visa.png + "'>" ;
+    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/visa.png + "'>" ;
   }
 
 }
 
 else {
-  document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/invalid.png + "'>" ;
+  //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/invalid.png + "'>" ;
 }
 
 
@@ -205,34 +205,36 @@ else {
 
 function guess() {
 
-  let answer = Math.floor(Math.random() * (999)) + 1;
-  let number;
-  let attempts = 0;
+    let answer = Math.floor(Math.random() * (999)) + 1;
+    let number;
+    let attempts = 0;
 
-do {
-  number = prompt('Please try to guess the integer number between 1 and 1000');
-  number = parseFloat(number);
+  do {
+    number = prompt('Please try to guess the integer number between 1 and 1000');
+    number = parseFloat(number);
 
-  if  (isNaN(number) || number < 1 || number > 1000 || Number.isInteger(number) == false) {
-    document.getElementById("guess-output").innerHTML = 'Please enter an integer between 1 and 1000';
-    continue;
-  }
+    if  (isNaN(number) || number < 1 || number > 1000 || Number.isInteger(number) == false) {
+      document.getElementById("guess-output").innerHTML = 'Please enter an integer between 1 and 1000';
+      continue;
+    }
 
-  attempts++;
+    attempts++;
 
-  if (number > answer){
-    document.getElementById("guuess-output").innerHTML = "Your most recent guess was larger than the answer";
-    continue;
-  }
+    if (number > answer){
+      document.getElementById("guess-output").innerHTML = "Your most recent guess was larger than the answer";
+      console.log('too big');
+      continue;
+    }
 
-  if (number < answer) {
-    document.getElementById("guess-output").innerHTML = "Your most recent guess was smaller than answer";
-    continue;
-  }
+    if (number < answer) {
+      document.getElementById("guess-output").innerHTML = "Your most recent guess was smaller than answer";
+      console.log('too small');
+      continue;
+    }
 
-  } while (number !== answer);
+    } while (number !== answer);
 
-document.getElementById("guess-output").innerHTML = ('Good job, you guessed the number ' + answer + ' in '  + attempts + ' tries!');
+  document.getElementById("guess-output").innerHTML = ('Good job, you guessed the number ' + answer + ' in '  + attempts + ' tries!');
 
 
   ////////////////// DO NOT MODIFY
