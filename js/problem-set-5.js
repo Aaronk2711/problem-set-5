@@ -26,11 +26,18 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  do {
-    height = prompt('Please enter an integer between 1 and 23 for your height');
-    windspeed = parseFloat(windspeed);
-  } while ( isNaN( windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false);
+let i = 1;
+let hash = '#';
+  height = prompt('Please enter an integer between 1 and 23 for your height');
+  height = parseFloat(height);
+  if(isNaN(height) || height < 1 || height > 23 || Number.isInteger(height) == false)
+   {
 
+   }
+
+  else {
+    mario();
+  }
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -125,7 +132,6 @@ function credit() {
    *       as a copy of the 'card' variable.
    */
 
-   let i;
    let value;
    let firstsum;
    let secondsum;
@@ -133,47 +139,55 @@ function credit() {
    let cardInt;
    let cardArray;
 
-   do {
-     card = prompt('Please enter your credit card number');
-     cardInt = parseFloat(card);
-   } while (isNaN(cardInt) || Number.isInteger(cardInt) == false);
+   while (true) {
+       card = prompt("Enter Credit Card");
+       cardInt = Number(card);
+       if (Number.isInteger(Number(card))){
+         //if (card.length == 16 || card.length == 15 || card.length == 13) {
+           //console.log("1length")
+           break;
+         //}
+       }
+     }
+
 
    cardArray = Array.from(card);
 
-for (i = card.length - 1; i >=0; i--)
+for (let i = cardInt.length - 1; i >=0; i = i-2)
 {
-  value = card.charAt(i);
+  value = cardInt.charAt(i);
   firstsum = firstsum + value*2;
 }
 
-for (i = card.length; i >=0; i--)
+for (let i = cardInt.length; i >=0; i = i-2)
 {
-  value = card.charAt(i);
+  value = cardInt.charAt(i);
   secondsum = secondsum + value;
 }
 
 totalsum = firstsum + secondsum;
 
 if (totalsum % 10 == 0) {
-  if (card.length == 15 && cardArray.charAt(1) == 3 && cardArray.charAt(2) == (4 || 7)) {
-    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/amex.png + "'>" ;
+  if (cardInt.length == 15 && cardInt.charAt(1) == 3 && cardInt.charAt(2) == (4 || 7)) {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/amex.png";
   }
 
-  if (card.length == 16 && cardArray.charAt(1) == 5 && cardArray.charAt(2) == (1 || 2 || 3 || 4 || 5)) {
-    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/mastercard.png + "'>" ;
+  if (cardInt.length == 16 && cardInt.charAt(1) == 5 && cardInt.charAt(2) == (1 || 2 || 3 || 4 || 5)) {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/mastercard.png";
   }
 
-  if (card.length == (13 || 16) && cardArray.charAt(1) == 3 && cardArray.charAt(2) == 4) {
-    //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/visa.png + "'>" ;
+  if (cardInt.length == (13 || 16) && cardInt.charAt(1) == 3 && cardInt.charAt(2) == 4) {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/visa.png";
   }
 
 }
 
 else {
-  //document.getElementById("credit-output").innerHTML = "<img src = '" + ../images/invalid.png + "'>" ;
+  document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/invalid.png";
 }
 
-
+console.log(typeof cardArray);
+console.log(typeof cardInt);
 
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
@@ -221,14 +235,12 @@ function guess() {
     attempts++;
 
     if (number > answer){
-      document.getElementById("guess-output").innerHTML = "Your most recent guess was larger than the answer";
-      console.log('too big');
+      alert('Too large. Guess lower.');
       continue;
     }
 
     if (number < answer) {
-      document.getElementById("guess-output").innerHTML = "Your most recent guess was smaller than answer";
-      console.log('too small');
+      alert('Too small. Guess higher.');
       continue;
     }
 
@@ -351,6 +363,45 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
+
+let totalscore;
+let averagescore;
+
+
+do {
+  score1 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score1 < 0.0 || score1 > 10.0|| !Number.isInteger(score1));
+scores.push(score1);
+
+do{
+  score2 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score2 < 0.0 || score2 > 10.0|| !Number.isInteger(score2));
+scores.push(score2);
+
+do{
+  score3 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score3 < 0.0 || score3 > 10.0|| !Number.isInteger(score3));
+scores.push(score3);
+
+do{
+  score4 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score4 < 0.0 || score4 > 10.0|| !Number.isInteger(score4));
+scores.push(score4);
+
+do{
+  score5 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score5 < 0.0 || score5 > 10.0|| !Number.isInteger(score5));
+scores.push(score5);
+
+do{
+  score6 = Number(prompt('Please enter a value between 0 and 10'));
+} while (score6 < 0.0 || score6 > 10.0|| !Number.isInteger(score6));
+scores.push(score6);
+
+totalscore = Number(score1) + Number(score2) + Number(score3) + Number(score4) + Number(score5) + Number(score6);
+averagescore = (totalscore - Math.max(score1, score2, score3, score4, score5, score6) - Math.min(score1, score2, score3, score4, score5, score6)) / 4;
+let p = document.getElementById('gymnastics-output');
+p.innerHTML = 'Discarded: ' + Math.min(score1, score2, score3, score4, score5, score6) + ', ' + Math.max(score1, score2, score3, score4, score5, score6) + '<br />Score: ' + averagescore.toFixed(2);
 
 
   /////////////////////////////// DO NOT MODIFY
