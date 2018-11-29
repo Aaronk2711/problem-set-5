@@ -132,6 +132,7 @@ function credit() {
    *       as a copy of the 'card' variable.
    */
 
+
    let value;
    let firstsum;
    let secondsum;
@@ -143,10 +144,7 @@ function credit() {
        card = prompt("Enter Credit Card");
        cardInt = Number(card);
        if (Number.isInteger(Number(card))){
-         //if (card.length == 16 || card.length == 15 || card.length == 13) {
-           //console.log("1length")
            break;
-         //}
        }
      }
 
@@ -155,35 +153,38 @@ function credit() {
 
 for (let i = cardInt.length - 1; i >=0; i = i-2)
 {
-  value = cardInt.charAt(i);
+  value = cardArray[i];
   firstsum = firstsum + value*2;
 }
 
 for (let i = cardInt.length; i >=0; i = i-2)
 {
-  value = cardInt.charAt(i);
+  value = cardArray[i];
   secondsum = secondsum + value;
 }
 
 totalsum = firstsum + secondsum;
 
-if (totalsum % 10 == 0) {
-  if (cardInt.length == 15 && cardInt.charAt(1) == 3 && cardInt.charAt(2) == (4 || 7)) {
-    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/amex.png";
+if (totalsum % 10 === 0) {
+  if (cardInt.length == 15 && (cardArray[0] == 3 && (cardArray[1] == 4 || cardArray[1] == 7))){
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/amex.png>";
   }
 
-  if (cardInt.length == 16 && cardInt.charAt(1) == 5 && cardInt.charAt(2) == (1 || 2 || 3 || 4 || 5)) {
-    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/mastercard.png";
+  if (cardInt.length == 16 && (card[0] == 5 && (cardArray[1] == 1 || cardArray[1] == 2 || cardArray[1] == 3 || cardArray[1] == 4 || cardArray[1] == 5))) {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/mastercard.png>";
   }
 
-  if (cardInt.length == (13 || 16) && cardInt.charAt(1) == 3 && cardInt.charAt(2) == 4) {
-    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/visa.png";
+  if (cardInt.length == 13 || cardInt.length == 16) && (cardArray[0] == 4)) {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/visa.png>";
   }
-
+  else {
+    document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/invalid.png>";
+  }
 }
 
 else {
-  document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/invalid.png";
+  console.log('Invalid');
+  document.getElementById("credit-output").innerHTML = "Invalid";
 }
 
 console.log(typeof cardArray);
