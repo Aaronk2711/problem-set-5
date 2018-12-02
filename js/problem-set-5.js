@@ -26,23 +26,36 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-let i = 1;
-let hash = '#';
-  height = prompt('Please enter an integer between 1 and 23 for your height');
-  height = parseFloat(height);
-  if(isNaN(height) || height < 1 || height > 23 || Number.isInteger(height) == false)
-   {
+  while (true){
+    height=prompt("Please enter a number between 1 and 23");
+    height=Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let i = 1;
+  let tag = '#';
+  let lines = "<code>";
+  let spaces = height-2;
 
-   }
-
-  else {
-    mario();
+  while (i<=height){
+    let a='';
+    for(let j=0;j<=spaces;j++) {
+      a+='&nbsp;';
+    }
+    spaces--;
+    tag=tag+'#';
+    lines=lines+a+tag+"</br>";
+    i++;
   }
-
+  document.getElementById("mario-easy-output").innerHTML=lines;
+  lines=lines+"</code>"
+  //document.GetById("mario-easy").innerHTML();
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
 }
+
 
 /*
  * Mario, Again. 10 points.
@@ -72,7 +85,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  while (true){
+   height=prompt("Please enter a valid height");
+   height=Number(height);
+   if(height>=1 && height<=23 && Number.isInteger(height)){
+     break;
+   };
+ };
+ let i=1;
+ let hash='#';
+ let lines="<code>";
+ let spaces_Before=height-2;
+ let spaces_After='&nbsp'+'&nbsp';
+ while (i<=height){
+   let a='';
+   for(let j=0;j<=spaces_Before;j++) {
+     a+='&nbsp;';
+   }
+   spaces_Before--;
+   hash=hash+'#';
+   lines=lines+a+hash+spaces_After+hash+"</br>";
+   i++;
+ }
+ document.getElementById("mario-hard-output").innerHTML=lines;
+ lines=lines+"</code>"
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -133,62 +169,54 @@ function credit() {
    */
 
 
-   let value;
-   let firstsum;
-   let secondsum;
-   let totalsum;
-   let cardInt;
-   let cardArray;
+   let firstsum = 0;
+   let secondsum = 0;
+   let totalsum = 0;
+   let j;
 
    while (true) {
        card = prompt("Enter Credit Card");
-       cardInt = Number(card);
-       if (Number.isInteger(Number(card))){
+       if ((card.length == 16 || card.length == 15 || card.length == 13) && Number.isInteger(Number(card))){
            break;
        }
      }
 
 
-   cardArray = Array.from(card);
-
-for (let i = cardInt.length - 1; i >=0; i = i-2)
+for (let i = card.length - 2; i >=0; i = i-2)
 {
-  value = cardArray[i];
-  firstsum = firstsum + value*2;
+  let num = Number(card[i]) * 2;
+  let numstring = num.toString();
+  for (j = 0; j < numstring.length; j += 1) {
+    firstsum = firstsum + Number(numstring[j]);
+  }
 }
 
-for (let i = cardInt.length; i >=0; i = i-2)
+for (let k = card.length-1; k >=0; k = k-2)
 {
-  value = cardArray[i];
-  secondsum = secondsum + value;
+  /*secondvalue = parseFloat(card[k]);
+  secondsum = secondsum + secondvalue;*/
+  secondsum = secondsum + Number(card[k]);
 }
 
 totalsum = firstsum + secondsum;
+console.log(totalsum);
 
-if (totalsum % 10 === 0) {
-  if (cardInt.length == 15 && (cardArray[0] == 3 && (cardArray[1] == 4 || cardArray[1] == 7))){
+  if (card.length == 15 && (card[0] == 3 && (card[1] == 4 || card[1] == 7)) && (totalsum) % 10 == 0){
     document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/amex.png>";
   }
 
-  if (cardInt.length == 16 && (card[0] == 5 && (cardArray[1] == 1 || cardArray[1] == 2 || cardArray[1] == 3 || cardArray[1] == 4 || cardArray[1] == 5))) {
+  else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 3 || card[1] == 4 || card[1] == 5)) && (totalsum) % 10 == 0) {
     document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/mastercard.png>";
   }
 
-  if (cardInt.length == 13 || cardInt.length == 16) && (cardArray[0] == 4)) {
+  else if (card.length == 13 || card.length == 16 && (card[0] == 4) && (totalsum) % 10 == 0) {
     document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/visa.png>";
   }
   else {
     document.getElementById("credit-output").innerHTML = "<img src ="  + "./images/invalid.png>";
   }
-}
 
-else {
-  console.log('Invalid');
-  document.getElementById("credit-output").innerHTML = "Invalid";
-}
-
-console.log(typeof cardArray);
-console.log(typeof cardInt);
+  card = Number(card);
 
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
