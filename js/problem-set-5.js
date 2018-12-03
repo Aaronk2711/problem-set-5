@@ -36,14 +36,14 @@ function mario() {
   let i = 1;
   let tag = '#';
   let lines = "<code>";
-  let spaces = height-2;
+  let empty = height-2;
 
   while (i<=height){
     let a='';
-    for(let j=0;j<=spaces;j++) {
+    for(let j=0;j<=empty;j++) {
       a+='&nbsp;';
     }
-    spaces--;
+    empty--;
     tag=tag+'#';
     lines=lines+a+tag+"</br>";
     i++;
@@ -92,19 +92,19 @@ function marioAgain() {
      break;
    };
  };
- let i=1;
- let hash='#';
- let lines="<code>";
- let spaces_Before=height-2;
- let spaces_After='&nbsp'+'&nbsp';
+ let i = 1;
+ let tag = '#';
+ let lines = "<code>";
+ let emptybefore = height-2;
+ let emptyafter = '&nbsp'+'&nbsp';
  while (i<=height){
    let a='';
-   for(let j=0;j<=spaces_Before;j++) {
-     a+='&nbsp;';
+   for(let j = 0; j <= emptybefore; j++) {
+     a += '&nbsp;';
    }
-   spaces_Before--;
-   hash=hash+'#';
-   lines=lines+a+hash+spaces_After+hash+"</br>";
+   emptybefore--;
+   tag = tag + '#';
+   lines = lines + a + tag + emptyafter + tag + "</br>";
    i++;
  }
  document.getElementById("mario-hard-output").innerHTML=lines;
